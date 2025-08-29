@@ -12,6 +12,8 @@ export default function Header() {
     { name: 'About', href: '/about', icon: <User size={16} /> },
     { name: 'Projects', href: '/projects', icon: <Building2 size={16} /> },
     { name: 'Services', href: '/services', icon: <FileText size={16} /> },
+    { name: 'Blogs', href: '/blog', icon: <FileText size={16} /> },
+    
     { name: 'Career', href: '/career', icon: <Briefcase size={16} /> },
     { name: 'Contact', href: '/contact', icon: <Phone size={16} /> }
   ]
