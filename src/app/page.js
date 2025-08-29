@@ -75,7 +75,7 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold text-gray-800 mb-4">
-                <span className="text-gold-600">Alliance Partners</span>
+                <span className="text-gold-600">Channel Partners</span>
               </h2>
               <p className="text-lg text-gray-600">
                 Proudly associated with India's most prestigious real estate developers
