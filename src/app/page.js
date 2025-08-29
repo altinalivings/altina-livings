@@ -1,9 +1,18 @@
+'use client'
+
+import { useState } from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import ProjectFilters from '../components/ProjectFilters'
 import FeaturedProjects from '../components/FeaturedProjects'
 
 export default function Home() {
+  const [activeFilters, setActiveFilters] = useState({})
+
+  const handleFilterChange = (filters) => {
+    setActiveFilters(filters)
+  }
+
   return (
     <>
       <Header />
@@ -39,10 +48,10 @@ export default function Home() {
             </div>
 
             {/* Filters */}
-            <ProjectFilters />
+            <ProjectFilters onFilterChange={handleFilterChange} />
             
             {/* Projects Grid */}
-            <FeaturedProjects />
+            <FeaturedProjects filters={activeFilters} />
           </div>
         </section>
 
