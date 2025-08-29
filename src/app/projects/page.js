@@ -53,30 +53,6 @@ const allProjects = [
     image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     status: "New Launch",
     featured: false
-  },
-  {
-    id: 5,
-    name: "DLF Cyber City",
-    developer: "DLF",
-    location: "Gurgaon, Cyber City",
-    type: "Commercial Office",
-    price: "12.5 Cr",
-    bhk: "Office Spaces",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    status: "Ready to Move",
-    featured: true
-  },
-  {
-    id: 6,
-    name: "Shobha Silicon",
-    developer: "Shobha",
-    location: "Bangalore, Electronic City",
-    type: "Commercial Complex",
-    price: "3.2 Cr",
-    bhk: "Retail Spaces",
-    image: "https://images.unsplash.com/photo-1503387762353-8c6637f89308?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    status: "Under Construction",
-    featured: false
   }
 ]
 
@@ -87,8 +63,6 @@ export default function ProjectsPage() {
     type: '',
     status: ''
   })
-
-  const [viewMode, setViewMode] = useState('grid')
 
   const filters = {
     city: ['Gurgaon', 'Bangalore', 'Mumbai', 'Delhi', 'Hyderabad'],
@@ -109,7 +83,7 @@ export default function ProjectsPage() {
   }
 
   const filteredProjects = allProjects.filter(project => {
-    if (activeFilters.city && project.location !== activeFilters.city) return false
+    if (activeFilters.city && !project.location.includes(activeFilters.city)) return false
     if (activeFilters.developer && project.developer !== activeFilters.developer) return false
     if (activeFilters.type && project.type !== activeFilters.type) return false
     if (activeFilters.status && project.status !== activeFilters.status) return false
@@ -122,11 +96,19 @@ export default function ProjectsPage() {
     <>
       <Header />
       
-      <main className="min-h-screen bg-gray-50 pt-32">
-        {/* Hero Section */}
-        <section className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-20">
-          <div className="container mx-auto px-4 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Premium Projects</h1>
+      <main className="min-h-screen bg-gray-50 pt-24">
+        {/* Hero Section with Unique Image */}
+        <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-20">
+          <div 
+            className="absolute inset-0 bg-cover bg-center opacity-40"
+            style={{
+              backgroundImage: "url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')"
+            }}
+          ></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-gold-900/30 to-gold-700/20"></div>
+          
+          <div className="relative container mx-auto px-4 text-center">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Premium Projects</h1>
             <p className="text-xl text-gold-200 max-w-2xl mx-auto">
               Discover exclusive properties from India's leading developers
             </p>
@@ -147,27 +129,14 @@ export default function ProjectsPage() {
                 )}
               </div>
 
-              <div className="flex items-center gap-4">
-                <div className="flex bg-gray-100 rounded-lg p-1">
-                  <button
-                    onClick={() => setViewMode('grid')}
-                    className={`p-2 rounded-md transition-colors ${
-                      viewMode === 'grid' ? 'bg-white text-gold-600 shadow-md' : 'text-gray-600'
-                    }`}
-                  >
-                    <Grid className="w-5 h-5" />
-                  </button>
-                </div>
-
-                {activeFiltersCount > 0 && (
-                  <button
-                    onClick={clearFilters}
-                    className="text-gold-600 hover:text-gold-700 text-sm font-medium"
-                  >
-                    Clear all
-                  </button>
-                )}
-              </div>
+              {activeFiltersCount > 0 && (
+                <button
+                  onClick={clearFilters}
+                  className="text-gold-600 hover:text-gold-700 text-sm font-medium"
+                >
+                  Clear all filters
+                </button>
+              )}
             </div>
 
             {/* Filter Options */}
@@ -190,28 +159,11 @@ export default function ProjectsPage() {
                 </div>
               ))}
             </div>
-
-            {/* Active Filters */}
-            {activeFiltersCount > 0 && (
-              <div className="flex flex-wrap gap-2 mb-6">
-                <span className="text-sm text-gray-600">Active filters:</span>
-                {Object.entries(activeFilters).map(([key, value]) =>
-                  value && (
-                    <span
-                      key={key}
-                      className="bg-gold-100 text-gold-800 px-3 py-1 rounded-full text-sm"
-                    >
-                      {value}
-                    </span>
-                  )
-                )}
-              </div>
-            )}
           </div>
         </section>
 
         {/* Projects Grid */}
-        <section className="py-16">
+        <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
             <div className="flex justify-between items-center mb-8">
               <h2 className="text-2xl font-bold text-gray-800">
@@ -221,7 +173,6 @@ export default function ProjectsPage() {
                 <option value="latest">Sort by: Latest</option>
                 <option value="price-low">Price: Low to High</option>
                 <option value="price-high">Price: High to Low</option>
-                <option value="name">Name: A to Z</option>
               </select>
             </div>
 
@@ -315,22 +266,22 @@ export default function ProjectsPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-gold-50">
+        <section className="py-20 bg-gold-600 text-white">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold text-gray-800 mb-6">Need Personalized Assistance?</h2>
-            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-              Our real estate experts will help you find the perfect property that matches your requirements and budget
+            <h2 className="text-3xl font-bold mb-6">Need Personalized Assistance?</h2>
+            <p className="text-xl mb-8 max-w-2xl mx-auto">
+              Our real estate experts will help you find the perfect property
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="tel:+919891234195"
-                className="bg-gold-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-gold-700 transition-colors"
+                className="bg-white text-gold-600 px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-colors"
               >
                 📞 Call +91 9891234195
               </a>
               <a
                 href="/contact"
-                className="border-2 border-gold-600 text-gold-600 px-8 py-4 rounded-xl font-semibold hover:bg-gold-600 hover:text-white transition-colors"
+                className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-gold-600 transition-colors"
               >
                 📧 Send Enquiry
               </a>
