@@ -28,24 +28,26 @@ export default function Contact() {
       
       <main className="min-h-screen bg-gray-50 pt-40">
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-20">
-          <div 
-            className="absolute inset-0 bg-cover bg-center opacity-40"
-            style={{
-              backgroundImage: "url('https://images.unsplash.com/photo-1577563908411-5077b6dc7624?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')",
-                minHeight: '500px',  // Increased height
-    backgroundPosition: 'center 30%'  // Better positioning
-            }}
-          ></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-gold-900/30 to-gold-700/20"></div>
-          
-          <div className="relative container mx-auto px-4 text-center">
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Get In Touch</h1>
-            <p className="text-xl text-gold-200 max-w-2xl mx-auto">
-              Ready to find your dream property? Let's start the conversation.
-            </p>
-          </div>
-        </section>
+        {/* Hero Section with Contained Background */}
+<section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-28">
+  <div className="absolute inset-0 overflow-hidden">
+    <div 
+      className="absolute inset-0 bg-cover bg-center opacity-40"
+      style={{
+        backgroundImage: "url('https://images.unsplash.com/photo-1577563908411-5077b6dc7624?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')",
+        backgroundPosition: 'center 30%'
+      }}
+    ></div>
+    <div className="absolute inset-0 bg-gradient-to-r from-gold-900/30 to-gold-700/20"></div>
+  </div>
+  
+  <div className="relative container mx-auto px-4 text-center">
+    <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Get In Touch</h1>
+    <p className="text-xl text-gold-200 max-w-2xl mx-auto">
+      Ready to find your dream property? Let's start the conversation.
+    </p>
+  </div>
+</section>
 
         {/* Contact Info & Form */}
         <section className="py-20">
