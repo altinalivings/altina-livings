@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { Filter, X } from 'lucide-react'
 
-export default function ProjectFilters() {
+export default function ProjectFilters({ onFilterChange }) {
   const [selectedFilters, setSelectedFilters] = useState({
     city: '',
     developer: '',
@@ -17,14 +17,18 @@ export default function ProjectFilters() {
   }
 
   const handleFilterChange = (filterType, value) => {
-    setSelectedFilters(prev => ({
-      ...prev,
-      [filterType]: value === prev[filterType] ? '' : value
-    }))
+    const newFilters = {
+      ...selectedFilters,
+      [filterType]: value === selectedFilters[filterType] ? '' : value
+    }
+    setSelectedFilters(newFilters)
+    onFilterChange(newFilters) // Pass filters to parent component
   }
 
   const clearFilters = () => {
-    setSelectedFilters({ city: '', developer: '', type: '' })
+    const clearedFilters = { city: '', developer: '', type: '' }
+    setSelectedFilters(clearedFilters)
+    onFilterChange(clearedFilters) // Pass cleared filters to parent
   }
 
   const activeFiltersCount = Object.values(selectedFilters).filter(Boolean).length
