@@ -1,111 +1,164 @@
-'use client'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+import { Building2, Users, Target, Home, Briefcase, ArrowRight } from 'lucide-react'
 
-import { useState, useEffect } from 'react'
-import { Menu, X, Home, User, Building2, FileText, Briefcase } from 'lucide-react'
-
-export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
+export default function Services() {
+  const services = [
+    {
+      icon: <Home className="w-8 h-8" />,
+      title: "Residential Sales",
+      description: "Premium apartments, villas, and plots from top developers",
+      features: ["DLF Projects", "Shobha Properties", "M3M Residences", "Godrej Homes", "Ready to Move", "Under Construction", "New Launch"]
+    },
+    {
+      icon: <Briefcase className="w-8 h-8" />,
+      title: "Commercial Properties",
+      description: "Office spaces, retail outlets, and commercial plots",
+      features: ["DLF Cyber City", "M3M Commercial", "Godrej Business", "Shobha Offices", "Tech Parks", "Retail Spaces", "Showrooms"]
+    },
+    {
+      icon: <Users className="w-8 h-8" />,
+      title: "Channel Partnerships",
+      description: "Exclusive partnerships with leading developers",
+      features: ["DLF Channel Partner", "Shobha Associate", "M3M Partner", "Godrej Alliance", "Direct Developer Prices", "Early Bird Offers", "Special Discounts"]
+    },
+    {
+      icon: <Target className="w-8 h-8" />,
+      title: "Investment Consulting",
+      description: "Expert guidance for real estate investments",
+      features: ["Market Analysis", "ROI Projections", "Legal Verification", "Portfolio Management", "Tax Benefits", "Future Growth Areas", "Exit Strategies"]
     }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  const menuItems = [
-    { name: 'Home', href: '/', icon: <Home size={16} /> },
-    { name: 'About', href: '/about', icon: <User size={16} /> },
-    { name: 'Projects', href: '/projects', icon: <Building2 size={16} /> },
-    { name: 'Services', href: '/services', icon: <FileText size={16} /> },
-    { name: 'Career', href: '/career', icon: <Briefcase size={16} /> }
   ]
 
   return (
     <>
-      {/* Top CTA Bar - Updated to gold */}
-      <div className="bg-gold-600 text-white py-2">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center">
-            <span>🏆 Premium Channel Partner for DLF, Shobha, M3M & Godrej</span>
-            <a href="tel:+919891234195" className="flex items-center gap-2 hover:underline">
-              <span className="text-sm">📞</span>
-              +91 9891234195
-            </a>
+      <Header />
+      
+      <main className="min-h-screen bg-gray-50 pt-40">
+        {/* Hero Section */}
+        <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-20">
+          <div 
+            className="absolute inset-0 bg-cover bg-center opacity-40"
+            style={{
+              backgroundImage: "url('https://images.unsplash.com/photo-1560472355-536de3962603?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')"
+            }}
+          ></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-gold-900/30 to-gold-700/20"></div>
+          
+          <div className="relative container mx-auto px-4 text-center">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Our Services</h1>
+            <p className="text-xl text-gold-200 max-w-2xl mx-auto">
+              Comprehensive real estate solutions with exclusive developer partnerships
+            </p>
           </div>
-        </div>
-      </div>
+        </section>
 
-      {/* Main Header - Updated colors */}
-      <header className={`fixed top-8 w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg py-2' : 'bg-transparent py-4'
-      }`}>
-        <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center">
-            {/* Logo with gold */}
-            <div className="flex items-center">
-              <div className="w-10 h-10 bg-gold-500 rounded-lg flex items-center justify-center mr-3">
-                <span className="text-white font-bold text-lg">AL</span>
-              </div>
-              <span className={`text-xl font-bold ${isScrolled ? 'text-gray-800' : 'text-white'}`}>
-                Altina Livings
-              </span>
+        {/* Services Grid */}
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold text-gray-800 mb-6">
+                What We <span className="text-gold-600">Offer</span>
+              </h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                End-to-end real estate services backed by 15+ years of expertise and strong developer relationships
+              </p>
             </div>
 
-            {/* Desktop Navigation - Updated hover color */}
-            <nav className="hidden md:flex items-center space-x-6">
-              {menuItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className={`flex items-center gap-1 transition-all duration-300 hover:text-gold-500 ${
-                    isScrolled ? 'text-gray-700' : 'text-white'
-                  }`}
-                >
-                  {item.icon}
-                  {item.name}
-                </a>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {services.map((service, index) => (
+                <div key={index} className="bg-gold-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border-l-4 border-gold-500">
+                  <div className="text-gold-600 mb-6">{service.icon}</div>
+                  
+                  <h2 className="text-2xl font-bold text-gray-800 mb-4">{service.title}</h2>
+                  <p className="text-gray-600 mb-6">{service.description}</p>
+                  
+                  <ul className="space-y-2 mb-6">
+                    {service.features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-center gap-2 text-gray-600">
+                        <div className="w-2 h-2 bg-gold-500 rounded-full"></div>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                  
+                  <button className="bg-gold-600 text-white px-6 py-3 rounded-lg hover:bg-gold-700 transition-colors flex items-center gap-2">
+                    Learn More
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
               ))}
-            </nav>
-
-            {/* Mobile Menu Button */}
-            <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              {isMenuOpen ? <X size={24} className={isScrolled ? 'text-gray-800' : 'text-white'} /> : <Menu size={24} className={isScrolled ? 'text-gray-800' : 'text-white'} />}
-            </button>
+            </div>
           </div>
+        </section>
 
-          {/* Mobile Navigation */}
-          {isMenuOpen && (
-            <div className="md:hidden mt-4 pb-4 bg-white rounded-lg shadow-lg">
-              <div className="flex flex-col space-y-3 pt-4">
-                {menuItems.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className="text-gray-700 py-2 px-4 hover:bg-gold-50 hover:text-gold-600 rounded-lg flex items-center gap-2"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item.icon}
-                    {item.name}
-                  </a>
-                ))}
+        {/* Developer Partnerships */}
+        <section className="py-20 bg-gray-50">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-3xl font-bold text-gray-800 mb-12">Our Developer Partners</h2>
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center mb-16">
+              {['DLF', 'Shobha', 'M3M', 'Godrej'].map((developer, index) => (
+                <div key={index} className="p-6 bg-white rounded-2xl shadow-lg">
+                  <div className="w-16 h-16 bg-gold-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Building2 className="w-8 h-8 text-gold-600" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-800">{developer}</h3>
+                  <p className="text-sm text-gray-600">Premium Projects</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="bg-gold-600 text-white p-8 rounded-2xl max-w-4xl mx-auto">
+              <h3 className="text-2xl font-bold mb-4">Why Choose Our Services?</h3>
+              <p className="mb-6">
+                With exclusive partnerships and 15+ years of experience, we provide unmatched access to premium properties 
+                and expert guidance throughout your real estate journey.
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+                <div>
+                  <h4 className="font-semibold mb-2">✓ Direct Developer Prices</h4>
+                  <p className="text-gold-100 text-sm">No middlemen, best prices</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-2">✓ Legal Verification</h4>
+                  <p className="text-gold-100 text-sm">100% paperwork verification</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-2">✓ End-to-End Support</h4>
+                  <p className="text-gold-100 text-sm">From search to possession</p>
+                </div>
               </div>
             </div>
-          )}
-        </div>
-      </header>
+          </div>
+        </section>
 
-      {/* Floating WhatsApp CTA - Keep green as it's standard for WhatsApp */}
-      <a
-        href="https://wa.me/919891234195"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-2xl z-50 hover:bg-green-600 transition-colors animate-bounce"
-      >
-        <span className="text-lg">💬</span>
-      </a>
+        {/* CTA Section */}
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-3xl font-bold text-gray-800 mb-6">Ready to Get Started?</h2>
+            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+              Contact our experts to discuss your real estate needs and discover the best opportunities
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="tel:+919891234195"
+                className="bg-gold-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-gold-700 transition-colors"
+              >
+                📞 Call +91 9891234195
+              </a>
+              <a
+                href="/contact"
+                className="border-2 border-gold-600 text-gold-600 px-8 py-4 rounded-xl font-semibold hover:bg-gold-600 hover:text-white transition-colors"
+              >
+                📧 Send Enquiry
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+      
+      <Footer />
     </>
   )
 }
