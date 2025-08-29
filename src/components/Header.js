@@ -38,10 +38,8 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Main Header - Updated colors */}
-      <header className={`fixed top-8 w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg py-2' : 'bg-transparent py-4'
-      }`}>
+      {/* Main Header - ALWAYS SOLID WHITE BACKGROUND */}
+      <header className="fixed top-8 w-full z-50 bg-white/95 backdrop-blur-md shadow-lg py-2">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center">
             {/* Logo with gold */}
@@ -49,20 +47,18 @@ export default function Header() {
               <div className="w-10 h-10 bg-gold-500 rounded-lg flex items-center justify-center mr-3">
                 <span className="text-white font-bold text-lg">AL</span>
               </div>
-              <span className={`text-xl font-bold ${isScrolled ? 'text-gray-800' : 'text-white'}`}>
+              <span className="text-xl font-bold text-gray-800">
                 Altina Livings
               </span>
             </div>
 
-            {/* Desktop Navigation - Updated hover color */}
+            {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-6">
               {menuItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className={`flex items-center gap-1 transition-all duration-300 hover:text-gold-500 ${
-                    isScrolled ? 'text-gray-700' : 'text-white'
-                  }`}
+                  className="flex items-center gap-1 transition-all duration-300 hover:text-gold-500 text-gray-700"
                 >
                   {item.icon}
                   {item.name}
@@ -72,7 +68,7 @@ export default function Header() {
 
             {/* Mobile Menu Button */}
             <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              {isMenuOpen ? <X size={24} className={isScrolled ? 'text-gray-800' : 'text-white'} /> : <Menu size={24} className={isScrolled ? 'text-gray-800' : 'text-white'} />}
+              {isMenuOpen ? <X size={24} className="text-gray-800" /> : <Menu size={24} className="text-gray-800" />}
             </button>
           </div>
 
@@ -97,7 +93,7 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Floating WhatsApp CTA - Keep green as it's standard for WhatsApp */}
+      {/* Floating WhatsApp CTA */}
       <a
         href="https://wa.me/919891234195"
         target="_blank"
