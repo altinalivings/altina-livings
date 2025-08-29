@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Menu, X, Home, User, Building2, FileText, Briefcase } from 'lucide-react'
+import { Menu, X, Home, User, Building2, FileText, Briefcase, Phone } from 'lucide-react'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -12,15 +12,16 @@ export default function Header() {
     { name: 'About', href: '/about', icon: <User size={16} /> },
     { name: 'Projects', href: '/projects', icon: <Building2 size={16} /> },
     { name: 'Services', href: '/services', icon: <FileText size={16} /> },
-    { name: 'Career', href: '/career', icon: <Briefcase size={16} /> }
+    { name: 'Career', href: '/career', icon: <Briefcase size={16} /> },
+    { name: 'Contact', href: '/contact', icon: <Phone size={16} /> }
   ]
 
   return (
     <>
-      {/* Fixed Top Marquee Bar */}
+      {/* Fixed Top Marquee Bar - Oscillating */}
       <div className="fixed top-0 w-full bg-gold-600 text-white py-2 z-50">
         <div className="overflow-hidden whitespace-nowrap">
-          <div className="animate-marquee inline-block">
+          <div className="animate-marquee-oscillate inline-block">
             {marqueeText} • {marqueeText} • {marqueeText}
           </div>
         </div>
@@ -104,17 +105,17 @@ export default function Header() {
         <span className="text-lg">💬</span>
       </a>
 
-      {/* Add custom CSS for marquee animation */}
+      {/* Add custom CSS for oscillating marquee animation */}
       <style jsx>{`
-        @keyframes marquee {
-          0% { transform: translateX(100%); }
-          100% { transform: translateX(-100%); }
+        @keyframes marquee-oscillate {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
         }
-        .animate-marquee {
-          animation: marquee 20s linear infinite;
+        .animate-marquee-oscillate {
+          animation: marquee-oscillate 30s linear infinite;
           padding-left: 100%;
         }
-        .animate-marquee:hover {
+        .animate-marquee-oscillate:hover {
           animation-play-state: paused;
         }
       `}</style>
