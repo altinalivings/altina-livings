@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { MapPin, Building2, Home, IndianRupee, ArrowRight } from 'lucide-react'
 
 // Sample projects data
@@ -97,7 +96,7 @@ export default function FeaturedProjects({ filters = {} }) {
   if (filteredProjects.length === 0) {
     return (
       <div className="text-center py-12">
-        <div className="text-amber-600 mb-4">
+        <div className="text-gold-500 mb-4">
           <Building2 className="w-16 h-16 mx-auto" />
         </div>
         <h3 className="text-xl font-semibold text-gray-800 mb-2">No projects found</h3>
@@ -110,12 +109,12 @@ export default function FeaturedProjects({ filters = {} }) {
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {filteredProjects.map(project => (
         <div key={project.id} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-         <div className="relative h-48">
-  <img
-    src={project.image}
-    alt={project.name}
-    className="object-cover w-full h-full"
-  />
+          <div className="relative h-48">
+            <img
+              src={project.image}
+              alt={project.name}
+              className="object-cover w-full h-full"
+            />
             <div className="absolute top-4 left-4">
               <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
                 project.status === "Ready to Move" 
@@ -131,7 +130,7 @@ export default function FeaturedProjects({ filters = {} }) {
 
           <div className="p-4">
             <div className="flex items-center gap-2 mb-2">
-              <Building2 className="w-4 h-4 text-amber-600" />
+              <Building2 className="w-4 h-4 text-gold-500" />
               <span className="text-sm text-gray-600">{project.developer}</span>
             </div>
 
@@ -155,7 +154,7 @@ export default function FeaturedProjects({ filters = {} }) {
 
             <a
               href={`/projects/${project.id}`}
-              className="w-full bg-amber-600 text-white py-2 px-4 rounded-lg hover:bg-amber-700 transition-colors flex items-center justify-center gap-2 text-sm font-semibold"
+              className="w-full bg-gold-600 text-white py-2 px-4 rounded-lg hover:bg-gold-700 transition-colors flex items-center justify-center gap-2 text-sm font-semibold"
             >
               View Details
               <ArrowRight className="w-4 h-4" />
