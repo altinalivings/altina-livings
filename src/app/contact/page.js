@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import { Phone, Mail, MapPin, Send } from 'lucide-react'
+import { Mail, MapPin, Send, Clock, Phone } from 'lucide-react'
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -18,17 +18,27 @@ export default function Contact() {
     e.preventDefault()
     // Handle form submission
     console.log('Form submitted:', formData)
+    alert('Thank you for your message! We will get back to you soon.')
+    setFormData({ name: '', email: '', phone: '', subject: '', message: '' })
   }
 
   return (
     <>
       <Header />
       
-      <main className="min-h-screen bg-gray-50 pt-32">
+      <main className="min-h-screen bg-gray-50 pt-40">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-20">
-          <div className="container mx-auto px-4 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Get In Touch</h1>
+        <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-20">
+          <div 
+            className="absolute inset-0 bg-cover bg-center opacity-40"
+            style={{
+              backgroundImage: "url('https://images.unsplash.com/photo-1577563908411-5077b6dc7624?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')"
+            }}
+          ></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-gold-900/30 to-gold-700/20"></div>
+          
+          <div className="relative container mx-auto px-4 text-center">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Get In Touch</h1>
             <p className="text-xl text-gold-200 max-w-2xl mx-auto">
               Ready to find your dream property? Let's start the conversation.
             </p>
@@ -73,19 +83,19 @@ export default function Contact() {
                       <MapPin className="w-6 h-6 text-gold-600" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-800">Office</h3>
-                      <p className="text-gray-600">Your Company Address, City, India</p>
+                      <h3 className="font-semibold text-gray-800">Office Address</h3>
+                      <p className="text-gray-600">123 Business District, Sector 45<br />Gurgaon, Haryana 122001</p>
                     </div>
                   </div>
-                </div>
 
-                {/* Business Hours */}
-                <div className="mt-8 p-6 bg-gold-50 rounded-2xl">
-                  <h3 className="font-semibold text-gray-800 mb-3">Business Hours</h3>
-                  <div className="space-y-1 text-gray-600">
-                    <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
-                    <p>Saturday: 10:00 AM - 4:00 PM</p>
-                    <p>Sunday: Closed</p>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-gold-100 rounded-full flex items-center justify-center">
+                      <Clock className="w-6 h-6 text-gold-600" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-800">Business Hours</h3>
+                      <p className="text-gray-600">Monday - Saturday: 9:00 AM - 7:00 PM<br />Sunday: 10:00 AM - 5:00 PM</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -99,7 +109,7 @@ export default function Contact() {
                     <div>
                       <input
                         type="text"
-                        placeholder="Your Name"
+                        placeholder="Your Full Name"
                         value={formData.name}
                         onChange={(e) => setFormData({...formData, name: e.target.value})}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold-500"
@@ -109,7 +119,7 @@ export default function Contact() {
                     <div>
                       <input
                         type="email"
-                        placeholder="Your Email"
+                        placeholder="Your Email Address"
                         value={formData.email}
                         onChange={(e) => setFormData({...formData, email: e.target.value})}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold-500"
@@ -122,7 +132,7 @@ export default function Contact() {
                     <div>
                       <input
                         type="tel"
-                        placeholder="Your Phone"
+                        placeholder="Your Phone Number"
                         value={formData.phone}
                         onChange={(e) => setFormData({...formData, phone: e.target.value})}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold-500"
@@ -136,18 +146,19 @@ export default function Contact() {
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold-500"
                         required
                       >
-                        <option value="">Select Subject</option>
-                        <option value="general">General Inquiry</option>
-                        <option value="project">Project Information</option>
+                        <option value="">Select Inquiry Type</option>
+                        <option value="residential">Residential Property</option>
+                        <option value="commercial">Commercial Property</option>
+                        <option value="investment">Investment Consultation</option>
                         <option value="partnership">Business Partnership</option>
-                        <option value="career">Career Opportunity</option>
+                        <option value="other">Other</option>
                       </select>
                     </div>
                   </div>
 
                   <div>
                     <textarea
-                      placeholder="Your Message"
+                      placeholder="Tell us about your requirements..."
                       rows={5}
                       value={formData.message}
                       onChange={(e) => setFormData({...formData, message: e.target.value})}
@@ -164,6 +175,22 @@ export default function Contact() {
                     Send Message
                   </button>
                 </form>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Map Section */}
+        <section className="py-20 bg-gold-50">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">Visit Our Office</h2>
+            <div className="bg-white p-6 rounded-2xl shadow-lg">
+              <div className="aspect-video bg-gray-200 rounded-lg flex items-center justify-center">
+                <div className="text-center text-gray-600">
+                  <MapPin className="w-12 h-12 mx-auto mb-4 text-gold-600" />
+                  <p>Google Maps Integration Here</p>
+                  <p className="text-sm">123 Business District, Sector 45, Gurgaon</p>
+                </div>
               </div>
             </div>
           </div>
