@@ -5,7 +5,7 @@ import { Menu, X, Home, User, Building2, FileText, Briefcase, Phone } from 'luci
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [marqueeText] = useState('🏆 Premium Channel Partner for DLF | Shobha | M3M | Godrej | Exclusive Projects | Luxury Apartments | Commercial Spaces | Villas | Ready to Move | Under Construction | New Launch 🏆')
+  const marqueeText = '🏆 Premium Channel Partner for DLF | Shobha | M3M | Godrej | Exclusive Projects | Luxury Apartments | Commercial Spaces | Villas | Ready to Move | Under Construction | New Launch 🏆'
 
   const menuItems = [
     { name: 'Home', href: '/', icon: <Home size={16} /> },
@@ -13,18 +13,28 @@ export default function Header() {
     { name: 'Projects', href: '/projects', icon: <Building2 size={16} /> },
     { name: 'Services', href: '/services', icon: <FileText size={16} /> },
     { name: 'Blogs', href: '/blog', icon: <FileText size={16} /> },
-    
     { name: 'Career', href: '/career', icon: <Briefcase size={16} /> },
     { name: 'Contact', href: '/contact', icon: <Phone size={16} /> }
   ]
 
   return (
     <>
-      {/* Fixed Top Marquee Bar - Oscillating */}
-      <div className="fixed top-0 w-full bg-gold-600 text-white py-2 z-50">
-        <div className="overflow-hidden whitespace-nowrap">
-          <div className="animate-marquee-oscillate inline-block">
-            {marqueeText} • {marqueeText} • {marqueeText}
+      {/* Fixed Top Marquee Bar - Smooth Infinite Scroll */}
+      <div className="fixed top-0 w-full bg-gold-600 text-white py-2 z-50 overflow-hidden">
+        <div className="flex whitespace-nowrap">
+          <div className="animate-infinite-scroll flex">
+            {[...Array(4)].map((_, i) => (
+              <span key={i} className="mx-4 flex items-center">
+                {marqueeText}
+              </span>
+            ))}
+          </div>
+          <div className="animate-infinite-scroll flex" aria-hidden="true">
+            {[...Array(4)].map((_, i) => (
+              <span key={i} className="mx-4 flex items-center">
+                {marqueeText}
+              </span>
+            ))}
           </div>
         </div>
         
@@ -107,17 +117,16 @@ export default function Header() {
         <span className="text-lg">💬</span>
       </a>
 
-      {/* Add custom CSS for oscillating marquee animation */}
+      {/* Add custom CSS for infinite scroll animation */}
       <style jsx>{`
-        @keyframes marquee-oscillate {
+        @keyframes infinite-scroll {
           0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+          100% { transform: translateX(-100%); }
         }
-        .animate-marquee-oscillate {
-          animation: marquee-oscillate 30s linear infinite;
-          padding-left: 100%;
+        .animate-infinite-scroll {
+          animation: infinite-scroll 40s linear infinite;
         }
-        .animate-marquee-oscillate:hover {
+        .animate-infinite-scroll:hover {
           animation-play-state: paused;
         }
       `}</style>
