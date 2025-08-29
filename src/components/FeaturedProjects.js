@@ -1,12 +1,13 @@
 import Image from 'next/image'
 import { MapPin, Building2, Home, IndianRupee, ArrowRight } from 'lucide-react'
 
-const projects = [
+// Sample projects data
+const allProjects = [
   {
     id: 1,
     name: "DLF Camellias",
     developer: "DLF",
-    location: "Gurgaon",
+    location: "Delhi NCR",
     type: "Residential",
     price: "4.5 Cr",
     image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
@@ -26,7 +27,7 @@ const projects = [
     id: 3,
     name: "M3M Golf Estate",
     developer: "M3M",
-    location: "Gurgaon",
+    location: "Delhi NCR",
     type: "Villas",
     price: "7.2 Cr",
     image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
@@ -41,13 +42,73 @@ const projects = [
     price: "5.9 Cr",
     image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     status: "New Launch"
+  },
+  {
+    id: 5,
+    name: "DLF Cyber City",
+    developer: "DLF",
+    location: "Delhi NCR",
+    type: "Commercial",
+    price: "12.5 Cr",
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    status: "Ready to Move"
+  },
+  {
+    id: 6,
+    name: "Shobha Silicon",
+    developer: "Shobha",
+    location: "Bangalore",
+    type: "Commercial",
+    price: "3.2 Cr",
+    image: "https://images.unsplash.com/photo-1503387762353-8c6637f89308?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    status: "Under Construction"
+  },
+  {
+    id: 7,
+    name: "M3M Capital",
+    developer: "M3M",
+    location: "Delhi NCR",
+    type: "Residential",
+    price: "6.8 Cr",
+    image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    status: "New Launch"
+  },
+  {
+    id: 8,
+    name: "Godrej Garden City",
+    developer: "Godrej",
+    location: "Mumbai",
+    type: "Residential",
+    price: "4.2 Cr",
+    image: "https://images.unsplash.com/photo-1582407947304-fd86f028f716?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    status: "Ready to Move"
   }
 ]
 
-export default function FeaturedProjects() {
+export default function FeaturedProjects({ filters = {} }) {
+  // Filter projects based on selected filters
+  const filteredProjects = allProjects.filter(project => {
+    if (filters.city && project.location !== filters.city) return false
+    if (filters.developer && project.developer !== filters.developer) return false
+    if (filters.type && project.type !== filters.type) return false
+    return true
+  })
+
+  if (filteredProjects.length === 0) {
+    return (
+      <div className="text-center py-12">
+        <div className="text-amber-600 mb-4">
+          <Building2 className="w-16 h-16 mx-auto" />
+        </div>
+        <h3 className="text-xl font-semibold text-gray-800 mb-2">No projects found</h3>
+        <p className="text-gray-600">Try adjusting your filters to see more results</p>
+      </div>
+    )
+  }
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      {projects.map(project => (
+      {filteredProjects.map(project => (
         <div key={project.id} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
           <div className="relative h-48">
             <Image
