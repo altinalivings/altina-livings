@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { Phone, Menu, X } from 'lucide-react'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -19,15 +18,14 @@ export default function Header() {
             <a href="/about" className="text-gray-700 hover:text-orange-600 transition-colors">About</a>
             <a href="/services" className="text-gray-700 hover:text-orange-600 transition-colors">Services</a>
             <a href="/projects" className="text-gray-700 hover:text-orange-600 transition-colors">Projects</a>
-            <a href="/contact" className="bg-orange-600 text-white px-6 py-2 rounded-lg hover:bg-orange-700 transition-colors flex items-center gap-2">
-              <Phone size={16} />
+            <a href="/contact" className="bg-orange-600 text-white px-6 py-2 rounded-lg hover:bg-orange-700 transition-colors">
               Get Quote
             </a>
           </nav>
 
           {/* Mobile Menu Button */}
           <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            ☰
           </button>
         </div>
 
@@ -39,8 +37,7 @@ export default function Header() {
               <a href="/about" className="text-gray-700 py-2">About</a>
               <a href="/services" className="text-gray-700 py-2">Services</a>
               <a href="/projects" className="text-gray-700 py-2">Projects</a>
-              <a href="/contact" className="bg-orange-600 text-white px-6 py-2 rounded-lg text-center flex items-center justify-center gap-2">
-                <Phone size={16} />
+              <a href="/contact" className="bg-orange-600 text-white px-6 py-2 rounded-lg text-center">
                 Get Quote
               </a>
             </div>
