@@ -59,3 +59,17 @@
 .animate-marquee:hover {
   animation-play-state: paused;
 }
+/* Oscillating Marquee Animation */
+@keyframes marquee-oscillate {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee-oscillate {
+  animation: marquee-oscillate 30s linear infinite;
+  padding-left: 100%;
+}
+
+.animate-marquee-oscillate:hover {
+  animation-play-state: paused;
+}
