@@ -1,136 +1,92 @@
 import { MapPin, Building2, Home, IndianRupee, ArrowRight } from 'lucide-react'
 
-// Sample projects data
 const allProjects = [
   {
     id: 1,
     name: "DLF Camellias",
     developer: "DLF",
-    location: "Delhi NCR",
-    type: "Residential",
+    location: "Gurgaon, Sector 42",
+    type: "Luxury Apartments",
     price: "4.5 Cr",
+    bhk: "3 & 4 BHK",
     image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    status: "Ready to Move"
+    status: "Ready to Move",
+    featured: true
   },
   {
     id: 2,
-    name: "Shobha Amber",
-    developer: "Shobha",
-    location: "Bangalore",
-    type: "Residential",
-    price: "2.8 Cr",
-    image: "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    status: "Under Construction"
+    name: "M3M Golf Estate",
+    developer: "M3M",
+    location: "Gurgaon, Golf Course Road",
+    type: "Luxury Villas",
+    price: "7.2 Cr",
+    bhk: "4 & 5 BHK",
+    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    status: "Ready to Move",
+    featured: true
   },
   {
     id: 3,
-    name: "M3M Golf Estate",
-    developer: "M3M",
-    location: "Delhi NCR",
-    type: "Villas",
-    price: "7.2 Cr",
-    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    status: "Ready to Move"
+    name: "DLF Cyber City",
+    developer: "DLF",
+    location: "Gurgaon, Cyber City",
+    type: "Commercial Office",
+    price: "12.5 Cr",
+    bhk: "Office Spaces",
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    status: "Ready to Move",
+    featured: true
   },
   {
     id: 4,
-    name: "Godrej Origins",
-    developer: "Godrej",
-    location: "Mumbai",
-    type: "Commercial",
-    price: "5.9 Cr",
-    image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    status: "New Launch"
-  },
-  {
-    id: 5,
-    name: "DLF Cyber City",
-    developer: "DLF",
-    location: "Delhi NCR",
-    type: "Commercial",
-    price: "12.5 Cr",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    status: "Ready to Move"
-  },
-  {
-    id: 6,
-    name: "Shobha Silicon",
-    developer: "Shobha",
-    location: "Bangalore",
-    type: "Commercial",
-    price: "3.2 Cr",
-    image: "https://images.unsplash.com/photo-1503387762353-8c6637f89308?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    status: "Under Construction"
-  },
-  {
-    id: 7,
-    name: "M3M Capital",
-    developer: "M3M",
-    location: "Delhi NCR",
-    type: "Residential",
-    price: "6.8 Cr",
-    image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    status: "New Launch"
-  },
-  {
-    id: 8,
     name: "Godrej Garden City",
     developer: "Godrej",
     location: "Mumbai",
     type: "Residential",
     price: "4.2 Cr",
+    bhk: "2 & 3 BHK",
     image: "https://images.unsplash.com/photo-1582407947304-fd86f028f716?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    status: "Ready to Move"
+    status: "Ready to Move",
+    featured: true
   }
 ]
 
-export default function FeaturedProjects({ filters = {} }) {
-  // Filter projects based on selected filters
-  const filteredProjects = allProjects.filter(project => {
-    if (filters.city && project.location !== filters.city) return false
-    if (filters.developer && project.developer !== filters.developer) return false
-    if (filters.type && project.type !== filters.type) return false
-    return true
-  })
-
-  if (filteredProjects.length === 0) {
-    return (
-      <div className="text-center py-12">
-        <div className="text-gold-500 mb-4">
-          <Building2 className="w-16 h-16 mx-auto" />
-        </div>
-        <h3 className="text-xl font-semibold text-gray-800 mb-2">No projects found</h3>
-        <p className="text-gray-600">Try adjusting your filters to see more results</p>
-      </div>
-    )
-  }
+export default function FeaturedProjects({ showOnlyFeatured = false }) {
+  const displayedProjects = showOnlyFeatured 
+    ? allProjects.filter(project => project.featured)
+    : allProjects
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      {filteredProjects.map(project => (
+      {displayedProjects.map(project => (
         <div key={project.id} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-          <div className="relative h-48">
+          <div className="relative h-56">
             <img
               src={project.image}
               alt={project.name}
-              className="object-cover w-full h-full"
+              className="w-full h-full object-cover"
             />
             <div className="absolute top-4 left-4">
+              <span className="bg-gold-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                Featured
+              </span>
+            </div>
+            <div className="absolute top-4 right-4">
               <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
                 project.status === "Ready to Move" 
                   ? "bg-green-100 text-green-800"
                   : project.status === "Under Construction"
                   ? "bg-blue-100 text-blue-800"
-                  : "bg-amber-100 text-amber-800"
+                  : "bg-gold-100 text-gold-800"
               }`}>
                 {project.status}
               </span>
             </div>
           </div>
 
-          <div className="p-4">
+          <div className="p-6">
             <div className="flex items-center gap-2 mb-2">
-              <Building2 className="w-4 h-4 text-gold-500" />
+              <Building2 className="w-4 h-4 text-gold-600" />
               <span className="text-sm text-gray-600">{project.developer}</span>
             </div>
 
