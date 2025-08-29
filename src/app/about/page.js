@@ -26,7 +26,9 @@ export default function About() {
           <div 
             className="absolute inset-0 bg-cover bg-center opacity-40"
             style={{
-              backgroundImage: "url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')"
+              backgroundImage: "url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')",
+              minHeight: '500px',  // Increased height
+              backgroundPosition: 'center 30%'  // Better positioning
             }}
           ></div>
           <div className="absolute inset-0 bg-gradient-to-r from-gold-900/30 to-gold-700/20"></div>
