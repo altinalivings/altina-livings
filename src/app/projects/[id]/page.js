@@ -20,11 +20,10 @@ export default function ProjectPage({ params }) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Project Image */}
           <div className="relative h-96 rounded-2xl overflow-hidden">
-            <Image
+            <img
               src={project.image}
               alt={project.name}
-              fill
-              className="object-cover"
+              className="object-cover w-full h-full"
             />
           </div>
 
