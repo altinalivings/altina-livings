@@ -1,5 +1,5 @@
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 import { CheckCircle, Clock, DollarSign } from 'lucide-react'
 
 export default function Home() {
