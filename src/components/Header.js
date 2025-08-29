@@ -1,32 +1,12 @@
-'use client'
-
-import { useState, useEffect } from 'react'
-import { Phone, MessageCircle, Menu, X, Home, User, Building2, FileText, Briefcase } from 'lucide-react'
+// ... existing imports ...
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  const menuItems = [
-    { name: 'Home', href: '/', icon: <Home size={16} /> },
-    { name: 'About', href: '/about', icon: <User size={16} /> },
-    { name: 'Projects', href: '/projects', icon: <Building2 size={16} /> },
-    { name: 'Insights', href: '/blog', icon: <FileText size={16} /> },
-    { name: 'Career', href: '/career', icon: <Briefcase size={16} /> }
-  ]
+  // ... existing state and effects ...
 
   return (
     <>
-      {/* Top CTA Bar */}
-      <div className="bg-amber-600 text-white py-2">
+      {/* Top CTA Bar - Updated to gold */}
+      <div className="bg-gold-600 text-white py-2">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center">
             <span>🏆 Premium Channel Partner for DLF, Shobha, M3M & Godrej</span>
@@ -38,15 +18,15 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Main Header */}
+      {/* Main Header - Updated colors */}
       <header className={`fixed top-8 w-full z-50 transition-all duration-300 ${
         isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg py-2' : 'bg-transparent py-4'
       }`}>
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center">
-            {/* Logo */}
+            {/* Logo with gold */}
             <div className="flex items-center">
-              <div className="w-10 h-10 bg-amber-500 rounded-lg flex items-center justify-center mr-3">
+              <div className="w-10 h-10 bg-gold-500 rounded-lg flex items-center justify-center mr-3">
                 <span className="text-white font-bold text-lg">AL</span>
               </div>
               <span className={`text-xl font-bold ${isScrolled ? 'text-gray-800' : 'text-white'}`}>
@@ -54,13 +34,13 @@ export default function Header() {
               </span>
             </div>
 
-            {/* Desktop Navigation */}
+            {/* Desktop Navigation - Updated hover color */}
             <nav className="hidden md:flex items-center space-x-6">
               {menuItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className={`flex items-center gap-1 transition-all duration-300 hover:text-amber-600 ${
+                  className={`flex items-center gap-1 transition-all duration-300 hover:text-gold-500 ${
                     isScrolled ? 'text-gray-700' : 'text-white'
                   }`}
                 >
@@ -70,34 +50,12 @@ export default function Header() {
               ))}
             </nav>
 
-            {/* Mobile Menu Button */}
-            <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              {isMenuOpen ? <X size={24} className={isScrolled ? 'text-gray-800' : 'text-white'} /> : <Menu size={24} className={isScrolled ? 'text-gray-800' : 'text-white'} />}
-            </button>
+            {/* ... rest of the header code ... */}
           </div>
-
-          {/* Mobile Navigation */}
-          {isMenuOpen && (
-            <div className="md:hidden mt-4 pb-4 bg-white rounded-lg shadow-lg">
-              <div className="flex flex-col space-y-3 pt-4">
-                {menuItems.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className="text-gray-700 py-2 px-4 hover:bg-amber-50 hover:text-amber-600 rounded-lg flex items-center gap-2"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item.icon}
-                    {item.name}
-                  </a>
-                ))}
-              </div>
-            </div>
-          )}
         </div>
       </header>
 
-      {/* Floating WhatsApp CTA */}
+      {/* Floating WhatsApp CTA - Keep green as it's standard for WhatsApp */}
       <a
         href="https://wa.me/919891234195"
         target="_blank"
