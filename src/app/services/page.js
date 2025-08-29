@@ -1,6 +1,6 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import { Phone, Building2, Users, Target, Handshake, ArrowRight } from 'lucide-react'
+import { Building2, Users, Target, ArrowRight, Home, Briefcase, Shield, Circle } from 'lucide-react'
 
 const services = [
   {
@@ -48,7 +48,10 @@ export default function Services() {
               {services.map((service, index) => (
                 <div key={index} className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
                   <div className="w-16 h-16 bg-gold-100 rounded-full flex items-center justify-center mb-6">
-                    <Building2 className="w-8 h-8 text-gold-600" />
+                    {index === 0 && <Home className="w-8 h-8 text-gold-600" />}
+                    {index === 1 && <Briefcase className="w-8 h-8 text-gold-600" />}
+                    {index === 2 && <Users className="w-8 h-8 text-gold-600" />}
+                    {index === 3 && <Target className="w-8 h-8 text-gold-600" />}
                   </div>
                   
                   <h2 className="text-2xl font-bold text-gray-800 mb-4">{service.title}</h2>
@@ -87,7 +90,9 @@ export default function Services() {
                   href="tel:+919891234195"
                   className="bg-gold-600 text-white px-8 py-4 rounded-xl hover:bg-gold-700 transition-colors flex items-center justify-center gap-2"
                 >
-                  <Phone className="w-5 h-5" />
+                  <div className="w-5 h-5 bg-white rounded-full flex items-center justify-center">
+                    <span className="text-gold-600 font-bold text-sm">📞</span>
+                  </div>
                   Call +91 9891234195
                 </a>
                 
@@ -111,7 +116,7 @@ export default function Services() {
               {['DLF', 'Shobha', 'M3M', 'Godrej'].map((developer, index) => (
                 <div key={index} className="p-6 bg-gray-50 rounded-2xl">
                   <div className="w-16 h-16 bg-gold-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Handshake className="w-8 h-8 text-gold-600" />
+                    <Shield className="w-8 h-8 text-gold-600" />
                   </div>
                   <h3 className="text-lg font-semibold text-gray-800">{developer}</h3>
                   <p className="text-sm text-gray-600">Official Partner</p>
