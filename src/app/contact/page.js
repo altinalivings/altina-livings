@@ -32,7 +32,7 @@ export default function Contact() {
           <div 
             className="absolute inset-0 bg-cover bg-center opacity-40"
             style={{
-              backgroundImage: "url('https://images.unsplash.com/photo-1577563908411-5077b6dc7624?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')".
+              backgroundImage: "url('https://images.unsplash.com/photo-1577563908411-5077b6dc7624?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')",
                 minHeight: '500px',  // Increased height
     backgroundPosition: 'center 30%'  // Better positioning
             }}
