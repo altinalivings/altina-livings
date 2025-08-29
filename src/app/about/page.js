@@ -3,13 +3,6 @@ import Footer from '@/components/Footer'
 import { Building2, Users, Target, Award } from 'lucide-react'
 
 export default function About() {
-  const stats = [
-    { number: '15+', label: 'Years Experience', icon: <Award className="w-8 h-8" /> },
-    { number: '95+', label: 'Projects Completed', icon: <Building2 className="w-8 h-8" /> },
-    { number: '5000+', label: 'Happy Customers', icon: <Users className="w-8 h-8" /> },
-    { number: '₹2000Cr+', label: 'Value Delivered', icon: <Target className="w-8 h-8" /> }
-  ]
-
   return (
     <>
       <Header />
@@ -29,13 +22,26 @@ export default function About() {
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-              {stats.map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-gold-500 mb-4 mx-auto">{stat.icon}</div>
-                  <div className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">{stat.number}</div>
-                  <div className="text-gray-600">{stat.label}</div>
-                </div>
-              ))}
+              <div className="text-center">
+                <div className="text-gold-500 mb-4 mx-auto"><Award className="w-8 h-8 mx-auto" /></div>
+                <div className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">15+</div>
+                <div className="text-gray-600">Years Experience</div>
+              </div>
+              <div className="text-center">
+                <div className="text-gold-500 mb-4 mx-auto"><Building2 className="w-8 h-8 mx-auto" /></div>
+                <div className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">95+</div>
+                <div className="text-gray-600">Projects Completed</div>
+              </div>
+              <div className="text-center">
+                <div className="text-gold-500 mb-4 mx-auto"><Users className="w-8 h-8 mx-auto" /></div>
+                <div className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">5000+</div>
+                <div className="text-gray-600">Happy Customers</div>
+              </div>
+              <div className="text-center">
+                <div className="text-gold-500 mb-4 mx-auto"><Target className="w-8 h-8 mx-auto" /></div>
+                <div className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">₹2000Cr+</div>
+                <div className="text-gray-600">Value Delivered</div>
+              </div>
             </div>
           </div>
         </section>
@@ -75,7 +81,6 @@ export default function About() {
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl font-bold text-gray-800 mb-12">Our Leadership</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* Team members would go here */}
               <div className="text-center">
                 <div className="w-32 h-32 bg-gold-100 rounded-full mx-auto mb-4 flex items-center justify-center">
                   <Users className="w-12 h-12 text-gold-600" />
