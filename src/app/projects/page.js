@@ -1,7 +1,16 @@
+'use client'
+
+import { useState } from 'react'
 import ProjectFilters from '@/components/ProjectFilters'
 import FeaturedProjects from '@/components/FeaturedProjects'
 
 export default function ProjectsPage() {
+  const [activeFilters, setActiveFilters] = useState({})
+
+  const handleFilterChange = (filters) => {
+    setActiveFilters(filters)
+  }
+
   return (
     <div className="min-h-screen bg-gray-50 pt-32">
       <div className="container mx-auto px-4 py-8">
@@ -14,8 +23,8 @@ export default function ProjectsPage() {
           </p>
         </div>
 
-        <ProjectFilters />
-        <FeaturedProjects />
+        <ProjectFilters onFilterChange={handleFilterChange} />
+        <FeaturedProjects filters={activeFilters} />
       </div>
     </div>
   )
