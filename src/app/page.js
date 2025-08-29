@@ -1,6 +1,6 @@
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import { CheckCircle, Clock, DollarSign, Shield, Award, Users, ArrowRight, Building2, Handshake } from 'lucide-react'
+import { CheckCircle, Clock, DollarSign, Shield, Award, Users, ArrowRight, Building2, Phone, Mail } from 'lucide-react'
 
 export default function Home() {
   // Featured Developer Partners
@@ -14,12 +14,12 @@ export default function Home() {
   // Services for Channel Partners
   const services = [
     {
-      icon: <Handshake className="w-8 h-8" />,
+      icon: <Users className="w-8 h-8" />,
       title: "Sales & Marketing",
       description: "End-to-end sales management and strategic marketing for premium residential projects"
     },
     {
-      icon: <Users className="w-8 h-8" />,
+      icon: <Award className="w-8 h-8" />,
       title: "Client Acquisition",
       description: "Targeted lead generation and conversion for luxury property buyers"
     },
@@ -29,7 +29,7 @@ export default function Home() {
       description: "Expert advisory services for project positioning and market analysis"
     },
     {
-      icon: <Award className="w-8 h-8" />,
+      icon: <Shield className="w-8 h-8" />,
       title: "Channel Management",
       description: "Comprehensive channel partner network development and management"
     }
