@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Menu, X, Home, User, Building2, FileText, Briefcase } from 'lucide-react'
 
 export default function Header() {
@@ -14,23 +14,54 @@ export default function Header() {
     { name: 'Career', href: '/career', icon: <Briefcase size={16} /> }
   ]
 
+  const socialMedia = [
+    { name: 'LinkedIn', icon: '💼', url: 'https://linkedin.com/company/altinalivings' },
+    { name: 'X (Twitter)', icon: '🐦', url: 'https://twitter.com/altinalivings' },
+    { name: 'Facebook', icon: '📘', url: 'https://facebook.com/altinalivings' },
+    { name: 'Instagram', icon: '📷', url: 'https://instagram.com/altinalivings' },
+    { name: 'YouTube', icon: '📺', url: 'https://youtube.com/altinalivings' }
+  ]
+
   return (
     <>
-      {/* Top CTA Bar */}
+      {/* Top CTA Bar with Social Media */}
       <div className="bg-gold-600 text-white py-2">
         <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center">
-            <span>🏆 Premium Channel Partner for DLF, Shobha, M3M & Godrej</span>
-            <a href="tel:+919891234195" className="flex items-center gap-2 hover:underline">
-              <span className="text-sm">📞</span>
-              +91 9891234195
-            </a>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-2">
+            {/* Social Media Icons */}
+            <div className="flex items-center gap-4">
+              {socialMedia.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-gold-200 transition-colors"
+                  title={social.name}
+                >
+                  <span className="text-sm">{social.icon}</span>
+                </a>
+              ))}
+            </div>
+
+            {/* Contact Info */}
+            <div className="flex items-center gap-4 text-sm">
+              <a href="tel:+919891234195" className="hover:underline flex items-center gap-1">
+                <span>📞</span>
+                +91 9891234195
+              </a>
+              <span className="text-gold-200">|</span>
+              <a href="mailto:info@altinalivings.com" className="hover:underline flex items-center gap-1">
+                <span>✉️</span>
+                info@altinalivings.com
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Main Header - ALWAYS SOLID WHITE BACKGROUND */}
-      <header className="fixed top-0 w-full z-50 bg-white shadow-lg">
+      {/* Main Header */}
+      <header className="fixed top-12 w-full z-50 bg-white shadow-lg">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center py-3">
             {/* Logo */}
