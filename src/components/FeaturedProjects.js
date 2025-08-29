@@ -110,13 +110,12 @@ export default function FeaturedProjects({ filters = {} }) {
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {filteredProjects.map(project => (
         <div key={project.id} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-          <div className="relative h-48">
-            <Image
-              src={project.image}
-              alt={project.name}
-              fill
-              className="object-cover"
-            />
+         <div className="relative h-48">
+  <img
+    src={project.image}
+    alt={project.name}
+    className="object-cover w-full h-full"
+  />
             <div className="absolute top-4 left-4">
               <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
                 project.status === "Ready to Move" 
