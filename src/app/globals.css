@@ -73,3 +73,26 @@
 .animate-marquee-oscillate:hover {
   animation-play-state: paused;
 }
+/* Smooth Infinite Scroll Animation */
+@keyframes infinite-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-infinite-scroll {
+  animation: infinite-scroll 25s linear infinite;
+  display: flex;
+}
+
+.animate-infinite-scroll:hover {
+  animation-play-state: paused;
+}
+
+/* Ensure smooth performance */
+.flex {
+  will-change: transform;
+}
