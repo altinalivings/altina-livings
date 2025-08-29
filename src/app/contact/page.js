@@ -29,12 +29,13 @@ export default function Contact() {
       <main className="min-h-screen bg-gray-50 pt-40">
         {/* Hero Section */}
         {/* Hero Section with Contained Background */}
+{/* Hero Section with Contained Background */}
 <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-28">
   <div className="absolute inset-0 overflow-hidden">
     <div 
       className="absolute inset-0 bg-cover bg-center opacity-40"
       style={{
-        backgroundImage: "url('https://images.unsplash.com/photo-1577563908411-5077b6dc7624?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')",
+        backgroundImage: "url('https://images.unsplash.com/photo-1448630360428-65456885c650?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')",
         backgroundPosition: 'center 30%'
       }}
     ></div>
@@ -42,10 +43,20 @@ export default function Contact() {
   </div>
   
   <div className="relative container mx-auto px-4 text-center">
-    <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Get In Touch</h1>
-    <p className="text-xl text-gold-200 max-w-2xl mx-auto">
-      Ready to find your dream property? Let's start the conversation.
+    <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+      Premium Real Estate <span className="text-gold-400">Partners</span>
+    </h1>
+    <p className="text-xl text-gold-200 max-w-3xl mx-auto mb-8">
+      Exclusive partnerships with India's leading developers. Transforming real estate visions into extraordinary realities.
     </p>
+    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="/projects" className="bg-gold-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-gold-700 transition-colors">
+        Explore Projects
+      </a>
+      <a href="/contact" className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-gray-900 transition-colors">
+        Get Consultation
+      </a>
+    </div>
   </div>
 </section>
 
