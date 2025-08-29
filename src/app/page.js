@@ -17,25 +17,36 @@ export default function Home() {
     <>
       <Header />
       
-      <main>
-        {/* Hero Section */}
-        <section className="min-h-screen relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 pt-32 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-gold-900/20 to-gold-700/10"></div>
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center opacity-30"></div>
+      <main className="min-h-screen bg-gray-50 pt-24">
+        {/* Hero Section with Unique Image */}
+        <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-20">
+          <div 
+            className="absolute inset-0 bg-cover bg-center opacity-40"
+            style={{
+              backgroundImage: "url('https://images.unsplash.com/photo-1448630360428-65456885c650?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')"
+            }}
+          ></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-gold-900/30 to-gold-700/20"></div>
           
-          <div className="relative container mx-auto px-4 py-20 text-center">
-            <div className="bg-gradient-to-r from-gold-500 to-gold-400 bg-clip-text">
-              <h1 className="text-5xl md:text-7xl font-bold text-transparent mb-6">
-                Premium Real Estate Partners
-              </h1>
-            </div>
-            <p className="text-xl text-gold-200 mb-8 max-w-3xl mx-auto">
-              Exclusive partnerships with India's leading developers. Find your dream property.
+          <div className="relative container mx-auto px-4 text-center">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              Premium Real Estate <span className="text-gold-400">Partners</span>
+            </h1>
+            <p className="text-xl text-gold-200 max-w-3xl mx-auto mb-8">
+              Exclusive partnerships with India's leading developers. Transforming real estate visions into extraordinary realities.
             </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="/projects" className="bg-gold-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-gold-700 transition-colors">
+                Explore Projects
+              </a>
+              <a href="/contact" className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-gray-900 transition-colors">
+                Get Consultation
+              </a>
+            </div>
           </div>
         </section>
 
-        {/* Featured Projects Section with Filters */}
+        {/* Featured Projects Section */}
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
@@ -47,10 +58,7 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Filters */}
             <ProjectFilters onFilterChange={handleFilterChange} />
-            
-            {/* Projects Grid */}
             <FeaturedProjects filters={activeFilters} />
           </div>
         </section>
