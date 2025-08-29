@@ -1,20 +1,14 @@
-import { Inter } from "next/font/google";
-import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import './globals.css'
 
 export const metadata = {
-  title: "Altina Livings - Premium Construction & Interiors",
-  description: "Crafting timeless spaces for modern living.",
-};
+  title: 'Altina Livings - Premium Construction & Interiors',
+  description: 'Crafting timeless spaces for modern living. Premium construction and interior design services.',
+}
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        {children}
-        {/* Tracking Scripts will be added here later */}
-      </body>
+      <body>{children}</body>
     </html>
-  );
+  )
 }
