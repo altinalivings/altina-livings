@@ -5,15 +5,6 @@ import { Menu, X, Home, User, Building2, FileText, Briefcase } from 'lucide-reac
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
 
   const menuItems = [
     { name: 'Home', href: '/', icon: <Home size={16} /> },
@@ -25,7 +16,7 @@ export default function Header() {
 
   return (
     <>
-      {/* Top CTA Bar - Updated to gold */}
+      {/* Top CTA Bar */}
       <div className="bg-gold-600 text-white py-2">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center">
@@ -39,10 +30,10 @@ export default function Header() {
       </div>
 
       {/* Main Header - ALWAYS SOLID WHITE BACKGROUND */}
-      <header className="fixed top-8 w-full z-50 bg-white/95 backdrop-blur-md shadow-lg py-2">
+      <header className="fixed top-0 w-full z-50 bg-white shadow-lg">
         <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center">
-            {/* Logo with gold */}
+          <div className="flex justify-between items-center py-3">
+            {/* Logo */}
             <div className="flex items-center">
               <div className="w-10 h-10 bg-gold-500 rounded-lg flex items-center justify-center mr-3">
                 <span className="text-white font-bold text-lg">AL</span>
@@ -74,8 +65,8 @@ export default function Header() {
 
           {/* Mobile Navigation */}
           {isMenuOpen && (
-            <div className="md:hidden mt-4 pb-4 bg-white rounded-lg shadow-lg">
-              <div className="flex flex-col space-y-3 pt-4">
+            <div className="md:hidden pb-4 bg-white">
+              <div className="flex flex-col space-y-3">
                 {menuItems.map((item) => (
                   <a
                     key={item.name}
